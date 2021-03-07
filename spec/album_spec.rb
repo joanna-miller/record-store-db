@@ -1,14 +1,8 @@
-require 'rspec'
 require 'album'
 require 'song'
-require 'pry'
+require 'spec_helper'
 
 describe '#Album' do
-
-  before(:each) do
-    Album.clear
-    Song.clear
-  end
 
   describe('.all') do
     it("returns an empty array when there are no albums") do
@@ -72,6 +66,14 @@ describe '#Album' do
       album2.save()
       album.delete()
       expect(Album.all).to(eq([album2]))
+    end
+    it("deletes all songs belonging to a deleted album") do
+      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album.save()
+      song = Song.new({:name => "Naima", :album_id => album.id, :id => nil})
+      song.save()
+      album.delete()
+      expect(Song.find(song.id)).to(eq(nil))
     end
   end
 
