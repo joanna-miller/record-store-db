@@ -4,6 +4,9 @@ require('./lib/album')
 require('./lib/song')
 require('pry')
 also_reload('lib/**/*.rb')
+require("pg")
+
+DB = PG.connect({:dbname => "record_store"})
 
 get('/') do
   redirect to('/albums')
@@ -29,7 +32,7 @@ get ('/albums/:id') do
   @album = Album.find(params[:id].to_i())
   erb(:album)
 end
-#
+
 get ('/albums/:id/edit') do
   @album = Album.find(params[:id].to_i())
   erb(:edit_album)

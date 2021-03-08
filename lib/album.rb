@@ -2,9 +2,9 @@ class Album
   attr_accessor :name
   attr_reader :id
 
-  def initialize(attributes)
-    @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
+  def initialize(attrs)
+    @name = attrs[:name]
+    @id = attrs[:id]
   end
 
   def self.all
@@ -13,7 +13,7 @@ class Album
     returned_albums.each() do |album|
       name = album.fetch("name")
       id = album.fetch("id").to_i
-      albums.push(Album.new({:name => name, :id => id}))
+      albums.push(Album.new({name: name, id: id}))
     end
     albums
   end
@@ -35,7 +35,7 @@ class Album
     album = DB.exec("SELECT * FROM albums WHERE id = #{id};").first
     name = album.fetch("name")
     id = album.fetch("id").to_i
-    Album.new({:name => name, :id => id})
+    Album.new({name: name, id: id})
   end
 
   def update(name)
