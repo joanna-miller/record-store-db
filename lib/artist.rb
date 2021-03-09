@@ -32,7 +32,7 @@ class Artist
   end
 
   def self.find(id)
-    artist = DB.exec("SELECT * FROM artists").first
+    artist = DB.exec("SELECT * FROM artists WHERE id = #{id};").first
     if artist
       name = artist["name"]
       id = artist["id"].to_i
