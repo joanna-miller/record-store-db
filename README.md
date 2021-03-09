@@ -4,7 +4,7 @@
 
 \
 [Epicodus](https://www.epicodus.com/) - [Ruby and Rails](https://www.learnhowtoprogram.com/ruby-and-rails/) - [Week 3](https://www.learnhowtoprogram.com/ruby-and-rails/ruby-database-basics)
-\
+
 
 Date created: 3/8/21–3/11/21
 
@@ -44,6 +44,6 @@ The following concepts are covered in this project:
 Copyright &copy; 2021 Jo Miller, Micah L. Olson, Andy Lawson
 
 ## Contact
-Jo Miller: via <a href="https://www.linkedin.com/in/jomillerde/" target="_blank">LinkedIn</a> or <a href="mailto:joannadawnmiller@gmail.com" target="_blank">email</a>.
-Micah L. Olson: via <a href="https://www.linkedin.com/in/micah-lewis-olson/" target="_blank">LinkedIn</a> or <a href="mailto:micah.olson@protonmail.com" target="_blank">email</a>.
+Jo Miller: via <a href="https://www.linkedin.com/in/jomillerde/" target="_blank">LinkedIn</a> or <a href="mailto:joannadawnmiller@gmail.com" target="_blank">email</a>. <br>
+Micah L. Olson: via <a href="https://www.linkedin.com/in/micah-lewis-olson/" target="_blank">LinkedIn</a> or <a href="mailto:micah.olson@protonmail.com" target="_blank">email</a>. <br>
 Andy Lawson: via <a href="https://www.linkedin.com/in/andrew-lawson-dev/" target="_blank">LinkedIn</a> or <a href="mailto:alawson89@gmail.com" target="_blank">email</a>.
