@@ -23,7 +23,7 @@ end
 
 post ('/albums') do
   name = params[:album_name]
-  album = Album.new({:name => name, :id => nil})
+  album = Album.new({name: name.gsub(/'/, "''")})
   album.save()
   redirect to('/albums')
 end
@@ -40,7 +40,7 @@ end
 
 patch ('/albums/:id') do
   @album = Album.find(params[:id].to_i())
-  @album.update(params[:name])
+  @album.update(params[:name].gsub(/'/, "''"))
   redirect to('/albums')
 end
 
@@ -57,7 +57,7 @@ end
 
 post ('/albums/:id/songs') do
   @album = Album.find(params[:id].to_i())
-  song = Song.new({:name => params[:song_name], :album_id => @album.id, :id => nil})
+  song = Song.new({name: params[:song_name].gsub(/'/, "''"), album_id: @album.id})
   song.save()
   erb(:album)
 end
@@ -65,7 +65,7 @@ end
 patch ('/albums/:id/songs/:song_id') do
   @album = Album.find(params[:id].to_i())
   song = Song.find(params[:song_id].to_i())
-  song.update(params[:name], @album.id)
+  song.update(params[:name].gsub(/'/, "''"), @album.id)
   erb(:album)
 end
 
