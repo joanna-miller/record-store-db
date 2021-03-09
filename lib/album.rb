@@ -33,7 +33,7 @@ class Album
 
   def self.find(id)
     album = DB.exec("SELECT * FROM albums WHERE id = #{id};").first
-    if album 
+    if album
       name = album["name"]
       id = album["id"].to_i
       Album.new({name: name, id: id})

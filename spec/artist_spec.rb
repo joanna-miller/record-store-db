@@ -49,8 +49,16 @@ describe(Artist) do
     it('updates an artist by id') do
       artist = Artist.new({name: "Ice-T", id: nil})
       artist.save
-      artist.update("Ice Cube")
+      artist.update({name: "Ice Cube"})
       expect(artist.name).to(eq("Ice Cube"))
+    end
+    it('adds an album to an artist') do
+      artist = Artist.new({name: "Ice Cube", id: nil})
+      artist.save
+      album = Album.new({name: "Laugh Now, Cry Later", id: nil})
+      album.save
+      artist.update({album_name: "Laugh Now, Cry Later"})
+      expect(artist.albums).to(eq([album]))
     end
   end
 
@@ -64,6 +72,7 @@ describe(Artist) do
       expect(Artist.all).to(eq([artist2]))
     end
   end
+
 
 end
 
