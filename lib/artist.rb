@@ -31,4 +31,23 @@ class Artist
     DB.exec("DELETE FROM artists *;")
   end
 
+  def self.find(id)
+    artist = DB.exec("SELECT * FROM artists").first
+    if artist
+      name = artist["name"]
+      id = artist["id"].to_i
+      Artist.new({name: name, id: id})
+    else
+      nil
+    end
+  end
+
+  def update(name)
+    @name = name
+    DB.exec("UPDATE artists SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM artists WHERE id = #{@id};")
+  end
 end

@@ -35,5 +35,35 @@ describe(Artist) do
     end
   end
 
+  describe('.find') do
+    it('finds an artist by id') do
+      artist = Artist.new({name: "Ice Cube", id: nil})
+      artist.save
+      artist2 = Artist.new({name: "Ice Cube", id: nil})
+      artist2.save
+      expect(Artist.find(artist.id)).to(eq(artist))
+    end
+  end
+
+  describe('#update') do
+    it('updates an artist by id') do
+      artist = Artist.new({name: "Ice-T", id: nil})
+      artist.save
+      artist.update("Ice Cube")
+      expect(artist.name).to(eq("Ice Cube"))
+    end
+  end
+
+  describe('#delete') do
+    it('deletes an artist by id') do
+      artist = Artist.new({name: "Ice-T", id: nil})
+      artist.save
+      artist2 = Artist.new({name: "Ice Cube", id: nil})
+      artist2.save
+      artist.delete
+      expect(Artist.all).to(eq([artist2]))
+    end
+  end
+
 end
 
