@@ -20,9 +20,9 @@ class Song
     returned_songs = DB.exec("SELECT * FROM songs;")
     songs = []
     returned_songs.each() do |song|
-      name = song.fetch("name")
-      album_id = song.fetch("album_id").to_i
-      id = song.fetch("id").to_i
+      name = song["name"]
+      album_id = song["album_id"].to_i
+      id = song["id"].to_i
       songs.push(Song.new({name: name, album_id: album_id, id: id}))
     end
     songs
@@ -30,15 +30,15 @@ class Song
 
   def save
     result = DB.exec("INSERT INTO songs (name, album_id) VALUES ('#{@name}', #{@album_id}) RETURNING id;")
-    @id = result.first().fetch("id").to_i
+    @id = result.first["id"].to_i
   end
 
   def self.find(id)
     song = DB.exec("SELECT * FROM songs WHERE id = #{id};").first
     if song
-      name = song.fetch("name")
-      album_id = song.fetch("album_id").to_i
-      id = song.fetch("id").to_i
+      name = song["name"]
+      album_id = song["album_id"].to_i
+      id = song["id"].to_i
       Song.new({name: name, album_id: album_id, id: id})
     else
       nil
@@ -63,8 +63,8 @@ class Song
     songs = []
     returned_songs = DB.exec("SELECT * FROM songs WHERE album_id = #{alb_id};")
     returned_songs.each() do |song|
-      name = song.fetch("name")
-      id = song.fetch("id").to_i
+      name = song["name"]
+      id = song["id"].to_i
       songs.push(Song.new({name: name, album_id: alb_id, id: id}))
     end
     songs
