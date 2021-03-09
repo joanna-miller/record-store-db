@@ -18,4 +18,17 @@ class Artist
     artists
   end
 
+  def save
+    result = DB.exec("INSERT INTO artists (name) VALUES ('#{@name}') RETURNING id;")
+    @id = result.first["id"].to_i
+  end
+
+  def ==(artist_to_compare)
+    self.name() == artist_to_compare.name()
+  end
+
+  def self.clear
+    DB.exec("DELETE FROM artists *;")
+  end
+
 end
