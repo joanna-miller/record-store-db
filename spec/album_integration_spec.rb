@@ -6,7 +6,7 @@ set(:show_exceptions, false)
 describe('create an album path', {:type => :feature}) do
   it('creates an album and then goes to the album page') do
     visit('/albums')
-    click_on('Add a new album')
+    click_on('Add a New Album')
     fill_in('album_name', :with => 'Yellow Submarine')
     click_on('Add album')
     expect(page).to have_content('Yellow Submarine')

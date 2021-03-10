@@ -1,5 +1,16 @@
-<% if @album %>
+
+  <% if @album %>
   <h2>Album Name: <%= @album.name %></h2>
+  <% if @artist != [] %>
+    <h3>Artist: <%= @artist[0].name %></h3>
+  <% else %>
+    <p>No Artist(s) listed for this album</p>
+    <form action="/albums/<%= @album.id %>/artists" method="post">
+      <label for="artist_name">Add an Artist</label>
+      <input id="artist_name" name="artist_name" type="text" required>
+      <button type="submit">Add artist</button>
+    </form>
+  <% end %>
 
   <h3>Album Songs</h3>
 

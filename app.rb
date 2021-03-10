@@ -31,6 +31,7 @@ end
 
 get ('/albums/:id') do
   @album = Album.find(params[:id].to_i())
+  @artist = @album.artists
   erb(:album)
 end
 
@@ -51,6 +52,13 @@ delete ('/albums/:id') do
   redirect to('/albums')
 end
 
+post ('/albums/:id/artists') do
+  @album = Album.find(params[:id].to_i())
+  @album.update({artist_name: params[:artist_name]})
+  @artist = @album.artists
+  erb(:album)
+end
+
 get ('/albums/:id/songs/:song_id') do
   @song = Song.find(params[:song_id].to_i())
   erb(:song)
@@ -60,6 +68,7 @@ post ('/albums/:id/songs') do
   @album = Album.find(params[:id].to_i())
   song = Song.new({name: params[:song_name].gsub(/'/, "''"), album_id: @album.id})
   song.save()
+  @artist = @album.artists
   erb(:album)
 end
 
@@ -67,6 +76,7 @@ patch ('/albums/:id/songs/:song_id') do
   @album = Album.find(params[:id].to_i())
   song = Song.find(params[:song_id].to_i())
   song.update(params[:name].gsub(/'/, "''"), @album.id)
+  @artist = @album.artists
   erb(:album)
 end
 
@@ -74,6 +84,7 @@ delete ('/albums/:id/songs/:song_id') do
   song = Song.find(params[:song_id].to_i())
   song.delete
   @album = Album.find(params[:id].to_i())
+  @artist = @album.artists
   erb(:album)
 end
 
